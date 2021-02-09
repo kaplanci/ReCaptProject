@@ -22,5 +22,22 @@ namespace Business.Concrete
              return _carDal.GetAll(); 
 
          }
+
+         public List<Car> GetByUnitPrice(decimal min, decimal max)
+         {
+             throw new NotImplementedException();
+         }
+
+         public void add(Car car)
+         {
+             if (car.Description.Length >= 2 && car.DailyPrice>0)
+             {
+                 _carDal.Add(car);
+             }
+             else
+             {
+                 Console.WriteLine("Ekleme Başarısız");
+             }
+         }
     }
 }
