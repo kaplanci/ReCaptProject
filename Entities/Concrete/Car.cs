@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Entities.Abstract;
+
 
 namespace Entities.Concrete
 {
@@ -10,9 +11,10 @@ namespace Entities.Concrete
         public int CarID { get; set; }
         public int BrandID { get; set; }
         public int ColorID { get; set; }
+        public string ColorName { get; set; }
         public int ModelYear { get; set; }
         public int DailyPrice { get; set; }
         public string Description { get; set; }
-
+        
     }
 }

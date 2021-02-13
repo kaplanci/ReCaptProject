@@ -5,6 +5,7 @@ using Business.Abstract;
 using DataAccess.Abstract;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
+using Entities.DTOs;
 
 namespace Business.Concrete
 {
@@ -26,6 +27,11 @@ namespace Business.Concrete
          public List<Car> GetByUnitPrice(decimal min, decimal max)
          {
              throw new NotImplementedException();
+         }
+
+         public List<CarDetailDto> GetCarDetails()
+         {
+             return _carDal.GetCarDetails();
          }
 
          public void add(Car car)
