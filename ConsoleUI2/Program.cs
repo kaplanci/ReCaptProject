@@ -9,14 +9,33 @@ namespace ConsoleUI2
     {
         static void Main(string[] args)
         {
-            CarTest();
+            //CarTest();
             //BrandTest();
+
+            RentDetailsTest();
+        }
+
+        private static void RentDetailsTest()
+        {
+            RentManager rentManager = new RentManager(new EfRentDal());
+            var result = rentManager.GetRentDetails();
+            foreach (var rent in result.Data)
+            {
+                Console.WriteLine(
+                    rent.RentId + "/" +
+                    rent.CarDescription + "/" +
+                    rent.CustomerName + "/" +
+                    rent.FirstName + "/" +
+                    rent.LastName + "/" +
+                    rent.RentDate + "/" +
+                    rent.ReturnDate);
+            }
         }
 
         private static void BrandTest()
         {
             BrandManager brandManager = new BrandManager(new EfBrandDal());
-            foreach (var brand in brandManager.GetAll())
+            foreach (var brand in brandManager.GetAll().Data)
             {
                 Console.WriteLine(brand.BrandName);
             }
@@ -24,7 +43,7 @@ namespace ConsoleUI2
 
         private static void CarTest()
         {
-            CarManager carManager = new CarManager(new EfCarDal());
+            CarManager carManager = new CarManager(new EfCarDal(),new BrandManager(new EfBrandDal()));
 
             var result = carManager.GetCarDetails();
             if (result.Success==true)
@@ -36,7 +55,7 @@ namespace ConsoleUI2
             }
             else
             {
-                Console.WriteLine(result.Message );
+                Console.WriteLine(result.Message);
             }
             
         }
